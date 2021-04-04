@@ -142,10 +142,6 @@ LOGGING = {
         "console": {"class": "logging.StreamHandler", "formatter": "json_formatter"},
     },
     "loggers": {
-        "django_structlog": {
-            "handlers": ["console"],
-            "level": "INFO",
-        },
         "testproject": {
             "handlers": ["console"],
             "level": "INFO",

@@ -21,7 +21,7 @@ logger = structlog.get_logger(__name__)
 
 @api_view(['GET','POST'])
 def hello_world(request):
-    logger.info("I am here")
+    logger.info("Handling hello...")
     if request.method == 'POST':
             return Response({"message": "Got some data!", "data": request.data})
     return Response({"message": "Hello, world!"})
