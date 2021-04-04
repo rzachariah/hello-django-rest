@@ -19,6 +19,8 @@ from django.conf.urls import url, include
 import structlog
 logger = structlog.get_logger(__name__)
 
+logger.info("I am alive")
+
 @api_view(['GET','POST'])
 def hello_world(request):
     logger.info("Handling hello...")
