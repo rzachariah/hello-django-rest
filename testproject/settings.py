@@ -122,6 +122,20 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+def rename_keys(_, __, ed):
+    """Splunk friendly keys.
+    
+    DOCS:
+    	https://www.structlog.org/en/stable/processors.html
+    """
+
+    ed["message"] = ed.pop("event")
+    if "request_id" in ed:
+        ed["requestId"] = ed.pop("request_id")
+    if "user_id" in ed:
+        ed["userId"] = ed.pop("user_id")
+    return ed
+
 LOGGING = {
     "version": 1,
     "disable_existing_loggers": False,
@@ -160,6 +174,7 @@ structlog.configure(
         structlog.stdlib.add_logger_name,
         structlog.stdlib.add_log_level,
         structlog.stdlib.PositionalArgumentsFormatter(),
+        rename_keys,
         structlog.processors.StackInfoRenderer(),
         structlog.processors.format_exc_info,
         structlog.processors.UnicodeDecoder(),
