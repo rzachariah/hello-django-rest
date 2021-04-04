@@ -139,19 +139,19 @@ LOGGING = {
         },
     },
     "handlers": {
-        "colored_stream": {"class": "logging.StreamHandler", "formatter": "json_formatter"},
+        "console": {"class": "logging.StreamHandler", "formatter": "json_formatter"},
     },
     "loggers": {
         "django_structlog": {
-            "handlers": ["colored_stream"],
+            "handlers": ["console"],
             "level": "INFO",
         },
         "testproject": {
-            "handlers": ["colored_stream"],
+            "handlers": ["console"],
             "level": "INFO",
         },
         "foreign_logger": {
-            "handlers": ["colored_stream"],
+            "handlers": ["console"],
             "level": "INFO",
         },
     },
