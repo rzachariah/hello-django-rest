@@ -16,12 +16,15 @@ Including another URLconf
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from django.conf.urls import url, include
+import structlog
+logger = structlog.get_logger(__name__)
 
 @api_view(['GET','POST'])
 def hello_world(request):
-        if request.method == 'POST':
-                return Response({"message": "Got some data!", "data": request.data})
-        return Response({"message": "Hello, world!"})
+    logger.info("I am here")
+    if request.method == 'POST':
+            return Response({"message": "Got some data!", "data": request.data})
+    return Response({"message": "Hello, world!"})
 
 urlpatterns = [
   url(r'^hello/$', hello_world),
